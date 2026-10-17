@@ -1,0 +1,254 @@
+/*
+ * NorskUp website. The colours are the app's (src/global.css in the app),
+ * the font its Latin font, Atkinson Hyperlegible Next (SIL OFL, licence in
+ * assets/fonts), self-hosted. No external fonts, scripts or trackers.
+ */
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('fonts/AtkinsonHyperlegibleNext-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('fonts/AtkinsonHyperlegibleNext-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light dark;
+  --surface: #edeff3;
+  --card: #fafbfc;
+  --ink: #2b2d42;
+  --muted: #5c6878;
+  --primary: #466bb4;
+  --primary-soft: #e6ecf8;
+  --line: #dde1e6;
+  --check-tint: #ddf1e5;
+  --check-strong: #2c6a47;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #1a1a2e;
+    --card: #2b2d42;
+    --ink: #e8eaf0;
+    --muted: #8d99ae;
+    --primary: #9db4e8;
+    --primary-soft: #303a5a;
+    --line: #3a3d52;
+    --check-tint: #243f33;
+    --check-strong: #9fd9b6;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family:
+    'Atkinson Hyperlegible Next',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--primary);
+  text-underline-offset: 0.15em;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -3rem;
+  padding: 0.5rem 1rem;
+  background: var(--card);
+  border-radius: 8px;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+.wrap {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+header.site {
+  padding: 1.25rem 0;
+}
+
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+main {
+  padding-bottom: 3rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 9vw, 3.75rem);
+  margin: 2rem 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.hero .lead {
+  font-size: 1.375rem;
+  margin: 0 0 2rem;
+}
+
+.points {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.points li {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem 1.125rem;
+}
+
+.points svg {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-top: 0.1rem;
+}
+
+.points .icon-bg {
+  fill: var(--check-tint);
+}
+
+.points .icon-mark {
+  stroke: var(--check-strong);
+}
+
+.points p {
+  margin: 0;
+}
+
+.points strong {
+  display: block;
+  font-weight: 600;
+}
+
+.points span {
+  color: var(--muted);
+}
+
+.soon {
+  display: inline-block;
+  background: var(--primary-soft);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.5rem 1.125rem;
+  font-weight: 600;
+  margin: 0 0 2rem;
+}
+
+.contact p {
+  margin: 0.25rem 0;
+}
+
+.policy h1 {
+  font-size: clamp(2rem, 7vw, 2.75rem);
+  margin: 1.5rem 0 0.25rem;
+}
+
+.policy .updated {
+  color: var(--muted);
+  margin: 0 0 2rem;
+}
+
+.policy h2 {
+  font-size: 1.375rem;
+  margin: 2.25rem 0 0.5rem;
+}
+
+.policy .summary {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+}
+
+.policy .summary p {
+  margin: 0;
+}
+
+.policy ul {
+  padding-inline-start: 1.25rem;
+}
+
+.policy li {
+  margin: 0.25rem 0;
+}
+
+address {
+  font-style: normal;
+}
+
+footer.site {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9375rem;
+  padding: 1.5rem 0 2.5rem;
+}
+
+footer.site p {
+  margin: 0.25rem 0;
+}
+
+footer.site a {
+  color: var(--muted);
+}
