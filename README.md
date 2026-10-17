@@ -18,3 +18,13 @@ Next (SIL Open Font License, `assets/fonts/`), self-hosted.
 
 The privacy policy describes only what the app does. When the app changes how
 it stores or sends anything, update both languages and the date at the top.
+
+## Brand
+
+`assets/brand/` holds the files the site uses from the NorskUp logo package
+(its BRAND.md is the source): the wordmark for light and dark mode in the
+header, the favicons and touch and PWA icons (`site.webmanifest`), and the
+Selbu rose - the faint tile behind the landing page's heading and the band
+above the footer, decoration only and never behind small text. Never redraw
+or recolour them; take a new version from the package.
+

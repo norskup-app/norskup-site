@@ -1,7 +1,12 @@
 /*
- * NorskUp website. The colours are the app's (src/global.css in the app),
- * the font its Latin font, Atkinson Hyperlegible Next (SIL OFL, licence in
- * assets/fonts), self-hosted. No external fonts, scripts or trackers.
+ * NorskUp website. The brand (assets/brand/, from the NorskUp logo package;
+ * its BRAND.md): the flag blue #00205B for headings and links in light mode,
+ * the cream #F7F3EA page, the wordmark in the header and the Selbu rose as
+ * decoration - never behind small text. The rest are the app's colours
+ * (src/global.css in the app); the brand red stays in the logo and the band.
+ * The font is the app's Latin font, Atkinson Hyperlegible Next (SIL OFL,
+ * licence in assets/fonts), self-hosted. No external fonts, scripts or
+ * trackers.
  */
 
 @font-face {
@@ -20,11 +25,15 @@
 
 :root {
   color-scheme: light dark;
-  --surface: #edeff3;
+  --surface: #f7f3ea; /* brand cream */
   --card: #fafbfc;
+  --heading: #00205b; /* brand flag blue */
+  --link: #00205b;
+  --hero-bg: #f7f3ea url('brand/selbu-tile-subtle-cream.svg');
+  --hero-ink: #00205b;
+  --hero-edge: #e5dcc8; /* the tile's own darkest cream: the panel shows on the cream page */
   --ink: #2b2d42;
   --muted: #5c6878;
-  --primary: #466bb4;
   --primary-soft: #e6ecf8;
   --line: #dde1e6;
   --check-tint: #ddf1e5;
@@ -35,9 +44,13 @@
   :root {
     --surface: #1a1a2e;
     --card: #2b2d42;
+    --heading: #fafbfc;
+    --link: #9db4e8;
+    --hero-bg: #00205b url('brand/selbu-tile-cream-on-navy.svg');
+    --hero-ink: #fafbfc;
+    --hero-edge: #00205b;
     --ink: #e8eaf0;
     --muted: #8d99ae;
-    --primary: #9db4e8;
     --primary-soft: #303a5a;
     --line: #3a3d52;
     --check-tint: #243f33;
@@ -71,12 +84,12 @@ body {
 }
 
 a {
-  color: var(--primary);
+  color: var(--link);
   text-underline-offset: 0.15em;
 }
 
 a:focus-visible {
-  outline: 3px solid var(--primary);
+  outline: 3px solid var(--link);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -112,10 +125,17 @@ header.site .wrap {
 }
 
 .brand {
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--ink);
-  text-decoration: none;
+  display: block;
+  line-height: 0;
+  border-radius: 8px;
+}
+
+/* The wordmark: 200 px wide, so the name itself is wider than the 120 px
+   below which BRAND.md asks for the icon instead. */
+.brand img {
+  display: block;
+  width: 200px;
+  height: auto;
 }
 
 main {
@@ -127,17 +147,28 @@ h2,
 h3 {
   font-weight: 600;
   line-height: 1.25;
+  color: var(--heading);
+}
+
+/* The hero: the Selbu rose as a faint background - the subtle cream tile in
+   light mode, cream on flag blue in dark mode. Only the large heading sits on
+   it (AA against the pattern's most contrasting pixel: 11.3:1 light, 7.6:1
+   dark). A CSS background, so screen readers never meet it. */
+.hero {
+  margin: 0.5rem 0 2rem;
+  padding: clamp(2rem, 7vw, 3.5rem) clamp(1.25rem, 5vw, 2.5rem);
+  border: 1px solid var(--hero-edge);
+  border-radius: 24px;
+  background: var(--hero-bg);
+  background-size: 152px;
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 9vw, 3.75rem);
-  margin: 2rem 0 0.5rem;
+  color: var(--hero-ink);
+  font-size: clamp(2rem, 7vw, 3rem);
+  margin: 0;
   letter-spacing: -0.01em;
-}
-
-.hero .lead {
-  font-size: 1.375rem;
-  margin: 0 0 2rem;
+  max-width: 16em;
 }
 
 .points {
@@ -239,10 +270,21 @@ address {
 }
 
 footer.site {
-  border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.9375rem;
-  padding: 1.5rem 0 2.5rem;
+  margin-top: 2.5rem;
+  padding: 0 0 2.5rem;
+}
+
+/* The Selbu band: a thin strip above the footer, the whole width, decoration
+   only (a CSS background: no text on it, nothing for screen readers). */
+footer.site::before {
+  content: '';
+  display: block;
+  height: 24px;
+  margin-bottom: 1.5rem;
+  background: #00205b url('brand/selbu-band-navy.svg') repeat-x center;
+  background-size: auto 24px;
 }
 
 footer.site p {
